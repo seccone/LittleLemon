@@ -3,21 +3,11 @@ from restaurant.models import MenuItem
 from restaurant.views import MenuItemsView
 from restaurant.serializers import MenuItemSerializer
 
-mocks = [
+test_items = [
     {
-        'title' : 'Couscous',
-        'price' : 25.49,
-        'inventory' : 5,
-    },
-    {
-        'title' : 'Tajine',
-        'price' : 17.99,
-        'inventory' : 4,
-    },
-    {
-        'title' : 'Tanjia',
-        'price' : 15.99,
-        'inventory' : 4,
+        'title' : 'Canjica',
+        'price' : 10.33,
+        'inventory' : 20,
     },
 ]
 
@@ -25,11 +15,11 @@ class MenuViewTest(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
-        for mock in mocks:
+        for item in test_items:
             MenuItem.objects.create(
-                title=mock.title,
-                price=mock.price,
-                inventory=mock.inventory
+                title=item.title,
+                price=item.price,
+                inventory=item.inventory
             )
 
     def test_getall(self):
